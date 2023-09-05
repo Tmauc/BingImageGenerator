@@ -11,6 +11,15 @@ Then run the command below to install the dependencies:
 npm install
 `
 
+For everything to work, you need to create an .env file and enter the BING_IMAGE_COOKIE.
+To retrieve this BING_IMAGE_COOKIE, go to [bing.create](https://www.bing.com/create) and register. Once you're logged in, open the Inspector and go to the Application tab, then Cookies and take the value of the cookie named '_U'.
+
+```
+.env
+
+BING_IMAGE_COOKIE = cookie value _U
+```
+
 ## Using the project
 Run the following command to launch the generator:
 
