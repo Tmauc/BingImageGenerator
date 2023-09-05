@@ -36,9 +36,8 @@ Here's an example of how to use the Bing image generator:
 ```
 npm start
 
-Enter text: A lion holding a book in its paws
-Enter image name: lion_image
-
+Entre le prompt de ton image: A lion holding a book in its paws
+Entre le nom de l'image: lion_image
 ```
 
 License

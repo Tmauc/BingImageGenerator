@@ -16,8 +16,8 @@ const getUserInput = (question) => {
 };
 
 const main = async () => {
-  const userInput = await getUserInput("Entrez une chaîne de texte : ");
-  const outputName = await getUserInput("Entrez le nom de l'image : ");
+  const userInput = await getUserInput("Entre le prompt de ton image : ");
+  const outputName = await getUserInput("Entre le nom de l'image : ");
 
   try {
     const imageFiles = await generateImageFiles(userInput);
