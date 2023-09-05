@@ -21,36 +21,40 @@ const main = async () => {
 
   try {
     const imageFiles = await generateImageFiles(userInput);
-    const base64ImageData = imageFiles[0].data;
 
-    const cropbase64Image = async (base64ImageData) => {
-      try {
-        const imageBuffer = Buffer.from(base64ImageData, 'base64');
+    imageFiles.forEach(async (imageFile, index) => {
+      const base64ImageData = imageFile.data;
+      const outputNameIndex = outputName + index;
 
-        const imageMetadata = await sharp(imageBuffer).metadata();
-        const originalWidth = imageMetadata.width;
-        const originalHeight = imageMetadata.height;
+      const cropbase64Image = async (base64ImageData) => {
+        try {
+          const imageBuffer = Buffer.from(base64ImageData, 'base64');
 
-        const left = 40;
-        const top = 40;
-        const newWidth = originalWidth - 80;
-        const newHeight = originalHeight - 80;
+          const imageMetadata = await sharp(imageBuffer).metadata();
+          const originalWidth = imageMetadata.width;
+          const originalHeight = imageMetadata.height;
 
-        await sharp(imageBuffer).extract({
-          left,
-          top,
-          width: newWidth,
-          height: newHeight,
-        })
-        .toFile('./imgs/' + outputName + '.jpeg');
+          const left = 40;
+          const top = 40;
+          const newWidth = originalWidth - 80;
+          const newHeight = originalHeight - 80;
 
-        console.log(`Image recadrée et enregistrée avec succès sous ${outputName}.jpeg`);
-      } catch (error) {
-        console.log('Erreur lors du recadrage de l\'image :', error);
-      }
-    };
+          await sharp(imageBuffer).extract({
+            left,
+            top,
+            width: newWidth,
+            height: newHeight,
+          })
+          .toFile(`./imgs/${outputNameIndex}.jpeg`);
 
-    await cropbase64Image(base64ImageData);
+          console.log(`Image recadrée et enregistrée avec succès sous ${outputName}.jpeg`);
+        } catch (error) {
+          console.log('Erreur lors du recadrage de l\'image :', error);
+        }
+      };
+
+      await cropbase64Image(base64ImageData);
+    });
   } catch (error) {
     console.log('Erreur lors de la génération des fichiers image :', error);
   } finally {

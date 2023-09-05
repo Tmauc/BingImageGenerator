@@ -30,6 +30,8 @@ npm start
 You will be prompted to enter the prompt you want to generate the image. 
 You will then be prompted to enter the name of the generated image.
 
+You can find your images in the imgs/ folder and on [bing.create](https://www.bing.com/images/create) in the My creations section.
+
 ## Example
 Here's an example of how to use the Bing image generator:
 
